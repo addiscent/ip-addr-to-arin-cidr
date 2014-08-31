@@ -41,13 +41,7 @@ class IPaddressValidator
     public function ipaddr_validate ($ipaddr_not_validated = NULL) {
         // validate 'ipaddr'
         $subnets = explode ( ".", $ipaddr_not_validated);
-        foreach ($subnets as $subnet) {
-            if (($subnet < "0") || ($subnet > "255")) {
-                return IPAV_INVALID;
-            }
-        }
         
-        // continue validate 'ipaddr'
         if (count($subnets) != 4) {
             return IPAV_INVALID;
         } else {
@@ -58,6 +52,16 @@ class IPaddressValidator
             }
         }
     
+        // continue validate 'ipaddr'
+        foreach ($subnets as $subnet) {
+            if (!is_numeric ( $subnet )) {
+                    return IPAV_INVALID;
+            } else {
+                if (($subnet < "0") || ($subnet > "255")) {
+                    return IPAV_INVALID;
+                }
+            }
+        }
         return IPAV_VALID;
     }
 }

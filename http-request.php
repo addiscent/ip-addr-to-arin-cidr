@@ -24,8 +24,8 @@
 
     Copious thanks to "info at b1g dot de".
 
-    The code which "info at b1g dot de" posted is 8 years, so minor changes in
-    declarations were made to update it to modern PHP standards.
+    The code which "info at b1g dot de" posted is 8 years old, so minor changes
+    in declarations were made to update it to modern PHP standards.
 
     For more information about re-using the source code in this product, see
     the other included .php files.  Also, refer to the "ip-addr-to-arin-cidr
