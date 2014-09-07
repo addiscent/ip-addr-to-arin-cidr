@@ -1,7 +1,7 @@
 <?php
 /*
     Filename: ip-addr-to-arin-cidr.php
-    Rev 2014.0829.2100
+    Rev 2014.0907.1230
     Product: ip-addr-to-arin-cidr
     by ckthomaston@gmail.com
     
@@ -59,7 +59,7 @@ if (!array_key_exists ('ipaddr', $_POST)) {
     $OutputWorker->set_cidr_data (NULL); // empty data causes user prompt
 } else {
     $ipaddr_not_validated = $_POST['ipaddr'];
-    $result = $IPaddressValidator->ipaddr_validate ($ipaddr_not_validated);
+    $result = ip2long($ipaddr_not_validated);
     if ($result == IPAV_VALID) {
         $ipaddr_validated = $ipaddr_not_validated;
         $result = $IPaddrToCIDRworker->get_cidr_data_result ($ipaddr_validated, $CIDRdataSet);

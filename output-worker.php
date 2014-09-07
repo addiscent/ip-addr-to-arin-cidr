@@ -1,7 +1,7 @@
 <?php
 /*
     Filename: output-worker.php
-    Rev 2014.0829.2100
+    Rev 2014.0907.1230
     Product: ip-addr-to-arin-cidr
     by ckthomaston@gmail.com
     
@@ -54,7 +54,7 @@ class OutputWorker
         .       "Deny From IP"
         .   "</h2>"
         .   '<h4>'
-        .       "product: ip-addr-to-arin-cidr, rev 2014.0829.2100"
+        .       "product: ip-addr-to-arin-cidr, rev 2014.0907.1230"
         .   "</h4>"
         .   '<p>'
         .       "This is a simple web host administrator's tool. It's only function is to provide
@@ -67,7 +67,8 @@ class OutputWorker
         .       "This tool neither writes nor modifies files on the client side,
                 nor on the server side. If you wish to use the code
                 snippet displayed below to modify your .htaccess file, you may copy-and-paste it
-                into your .htaccess file manually."
+                into your .htaccess file manually.  Note that only the snippet highlighted
+                 in yellow is .htaccess file safe."
         .   "</p>"
         .   '<p>'
         .   "<small>"
@@ -80,14 +81,23 @@ class OutputWorker
         .           "Do not edit your .htaccess file unless you are well advised of the risks."
         .       "</strong>"
         .   "</small>"
-        .   '<h4>'
-        .       "User Instructions"
-        .   "</h4>"
-        .   '<p>'
-        .       "Submit an IP address, e.g., 127.0.0.1, in the edit box below.
-                A network CIDR will be displayed, placed in a code snippet
-                format suitable for copy-and-paste into an .htaccess file."
-        .   "</p>"
+        .   '<div style="background: #f0f0ff; border: 1px solid #ccc; padding: 5px 10px; width: 50%;">'
+        .       '<p style="text-align: left;">'
+        .           "<small>"
+        .                'View, download, or fork the "Deny From IP" PHP source code on GitHub at: <br>'
+        .                    '<a href="https://github.com/ckthomaston/ip-addr-to-arin-cidr">'
+        .                    "https://github.com/ckthomaston/ip-addr-to-arin-cidr</a>"
+        .           "</small>"
+        .       "</p>"
+        .   "</div>"
+        .       "<h4>"
+        .           "User Instructions"
+        .       "</h4>"
+        .       '<p>'
+        .           "Submit an IP address, e.g., 127.0.0.1, in the edit box below.
+                    A network CIDR will be displayed, placed in a code snippet
+                    format suitable for copy-and-paste into an .htaccess file."
+        .       "</p>"
         .   '<form action="ip-addr-to-arin-cidr.php" method="post">'
         .   '<p>'
         .       'IP Address: <input type="text" name="ipaddr"> <input type="submit">'
@@ -97,11 +107,41 @@ class OutputWorker
     
     // display CIDR data set
     public function set_cidr_data ($CIDRdataSet = NULL) {
+        
         if ($CIDRdataSet == NULL) {
             $this->display_instructions_form ();
             return;
         }
+        
         $this->display_instructions_form ();
+        
+        // list company name
+        $org_name = NULL;
+        $org_handle = NULL;
+        $CIDRdataSet->get_company_info ($org_name, $org_handle);
+        if ($org_name != "") {
+            echo "<p>"
+                .   "Organization name: "
+                .   $org_name
+                .   "<br/>"
+                .   "Organization handle: "
+                .   $org_handle
+               . "</p>";
+        }
+        
+        // list customer name
+        $customer_name = NULL;
+        $customer_handle = NULL;
+        $CIDRdataSet->get_customer_info ($customer_name, $customer_handle);
+        if ($customer_name != "") {
+            echo "<p>"
+                .   "Customer name: " 
+                .   $customer_name
+                .   "<br/>"
+                .   "Customer handle: "
+                .   $customer_handle
+                . "</p>";
+        }
         echo "<p>
                 <em>
                     <small>
@@ -134,32 +174,6 @@ class OutputWorker
             echo "<br/>";
         }
         
-        // append items items which are not typically desired within code snippet
-        $org_name = NULL;
-        $org_handle = NULL;
-        $CIDRdataSet->get_company_info ($org_name, $org_handle);
-        if ($org_name != "") {
-            echo "<p>"
-                .   "Organization name: "
-                .   $org_name
-                .   "<br/>"
-                .   "Organization handle: "
-                .   $org_handle
-               . "</p>";
-        }
-        
-        $customer_name = NULL;
-        $customer_handle = NULL;
-        $CIDRdataSet->get_customer_info ($customer_name, $customer_handle);
-        if ($customer_name != "") {
-            echo "<p>"
-                .   "Customer name: " 
-                .   $customer_name
-                .   "<br/>"
-                .   "Customer handle: "
-                .   $customer_handle
-                . "</p>";
-        }
     }
 }
 ?>
