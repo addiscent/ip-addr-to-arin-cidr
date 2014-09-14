@@ -1,40 +1,40 @@
 <?php
 /*
     Filename: ipaddr-to-cidr-worker.php
-    Rev 2014.0829.2100
-    Product: ip-addr-to-arin-cidr
-    by ckthomaston@gmail.com
+    Rev 2014.0914.0730
+    Project: ip-addr-to-arin-cidr
+    Copyright (C) Charles Thomaston - ckthomaston@gmail.com
     
     Description:
     
-    The IPaddrToCIDRworker class is responsible for requesting data from the
-    ARIN Whois-RWS API, for a specific IP address.  The data is fetched via the
-    HTTPRequest class.  The data received is an XML object.  The
-    IPaddrToCIDRworker parses the desired information from the XML object, and
-    stores it in the CIDRdataSet class.  
-    
-    For more information about re-using the source code in this product, see
-    the other included .php files.  Also, refer to the "ip-addr-to-arin-cidr
-    Project UML Class Diagram".
+        The IPaddrToCIDRworker class is responsible for requesting data from
+        the ARIN Whois-RWS API, for a specific IP address.  The data is fetched
+        via the HTTPRequest class.  The data received is an XML object.  The
+        IPaddrToCIDRworker parses the desired information from the XML object,
+        and stores it in the CIDRdataSet class.  
+        
+        For more information about re-using the source code in this product, see
+        the other included .php files.  Also, refer to the "ip-addr-to-arin-cidr
+        Project UML Class Diagram" file, itac-class-diagram.png.
     
     License:
 
-    The license under which this software product is released is GPLv2.  
+        The license under which this software product is released is GPLv2.  
     
     Disclaimer:
     
-    Some of the source code used in this product may have been re-used from
-    other sources.
-    
-    None of the source code in this product, original or derived, has been
-    surveyed for vulnerabilities to potential security risks.
-    
-    Use at your own risk, author is not liable for damages, product is not
-    warranted to be useful for anything, copyrights held by their respective
-    owners.
-*/
+        Some of the source code used in this product may have been re-used from
+        other sources.
+        
+        None of the source code in this product, original or derived, has been
+        surveyed for vulnerabilities to potential security risks.
+        
+        Use at your own risk, author is not liable for damages, product is not
+        warranted to be useful for anything, copyrights held by their respective
+        owners.
+    */
 
-// statuses returned by class IPaddrToCIDRworker
+// status returned by class IPaddrToCIDRworker
 define ("STATUS_SUCCESS", TRUE);
 define ("STATUS_FAIL", FALSE); 
 
@@ -43,11 +43,14 @@ class IPaddrToCIDRworker
 
     // Remove undesired chars from the beginning of $in_string.
     //      $in_string:  string to remove chars from, (left end)
-    //      $strstr_arg: remove all chars from left of $in_string, up to, but not including, $strstr_arg
-    //      Note:  strstr() leaves $strstr_arg match not removed, must use ltrim() to remove it
+    //      $strstr_arg: remove all chars from left of $in_string, up to,
+    //      but not including, $strstr_arg.  Note:  strstr() leaves $strstr_arg
+    //      match not removed, must use ltrim() to remove it
     private function ltrim_to_data ($in_string, $strstr_arg) {
+        
         $str_remain = strstr($in_string, $strstr_arg);
         $str_remain = ltrim($str_remain, $strstr_arg);
+        
         return $str_remain;
     }
     
@@ -120,6 +123,7 @@ class IPaddrToCIDRworker
     
         // save 'orgRef name"' if it was found
         if ($string_remainder != "") { // orgRef name=" found
+        
             // save the organization name -----------------------------
             $company_name = strstr($string_remainder, '"', TRUE);
             

@@ -1,38 +1,41 @@
 <?php
 /*
     Filename: cidr-data-set.php
-    Rev 2014.0829.2100
-    Product: ip-addr-to-arin-cidr
-    by ckthomaston@gmail.com
+    Rev 2014.0914.0730
+    Project: ip-addr-to-arin-cidr
+    Copyright (C) Charles Thomaston - ckthomaston@gmail.com
     
     Description:
     
-    The CIDRdataSet class is a data aggregation object.  It stores parsed ARIN
-    Whois-RWS network-related information, all of which is stored as received
-    from the IPaddrToCIDRworker class, with one exception; the "add_cidr()"
-    method constructs a proper CIDR spec using the passed-in values, e.g.,
-    127.0.0.1 and 8 are concatenated to produce 127.0.0.1/8. "add_cidr()"
-    also maps the cidr length value to its network range size, e.g., 8=>16M.
+        The CIDRdataSet class is a data aggregation object.  It stores parsed
+        ARIN Whois-RWS network-related information, all of which is stored as
+        received from the IPaddrToCIDRworker class, with one exception; the
+        "add_cidr()" method constructs a proper CIDR spec using the passed-in
+        values, e.g., 127.0.0.1 and 8 are concatenated to produce 127.0.0.1/8.
+        "add_cidr()" also maps the cidr length value to its network range size,
+        e.g., 8=>16M.
+        
+    Developer's notes:
     
-    For more information about re-using the source code in this product, see
-    the other included .php files.  Also, refer to the "ip-addr-to-arin-cidr
-    Project UML Class Diagram".
-    
+        For more information about re-using the source code in this product, see
+        the other included .php files.  Also, refer to the "ip-addr-to-arin-cidr
+        Project UML Class Diagram" file, itac-class-diagram.png.
+
     License:
 
-    The license under which this software product is released is GPLv2.  
+        The license under which this software product is released is GPLv2.  
     
     Disclaimer:
     
-    Some of the source code used in this product may have been re-used from
-    other sources.
-    
-    None of the source code in this product, original or derived, has been
-    surveyed for vulnerabilities to potential security risks.
-    
-    Use at your own risk, author is not liable for damages, product is not
-    warranted to be useful for anything, copyrights held by their respective
-    owners.
+        Some of the source code used in this product may have been re-used from
+        other sources.
+        
+        None of the source code in this product, original or derived, has been
+        surveyed for vulnerabilities to potential security risks.
+        
+        Use at your own risk, author is not liable for damages, product is not
+        warranted to be useful for anything, copyrights held by their respective
+        owners.
 */
 
 class CIDRdataSet
@@ -100,22 +103,31 @@ class CIDRdataSet
     
     // build a $cidr_spec and netblock size pair and add them to the list
     public function add_cidr ($address_range_start = NULL, $cidr_length = NULL) {
+        
         $cidr_spec = $address_range_start . '/' . $cidr_length;
+        
         $this->CIDRnbsize["CIDR_SPEC"] = $cidr_spec;
+        
         $nbsize = $this->netblock_size_map[$cidr_length];
+        
         $this->CIDRnbsize["NETBLOCK_SIZE"] = $nbsize;
+        
         array_push($this->CIDRnbsize_list, $this->CIDRnbsize);
     }
     
     // 
     public function set_company_info ($in_company_name = NULL, $in_company_handle = NULL) {
+        
         $this->company_name = $in_company_name;
+        
         $this->company_handle = $in_company_handle;
     }
     
     // 
     public function set_customer_info ($in_customer_name = NULL, $in_customer_handle = NULL) {
+        
         $this->customer_name = $in_customer_name;
+        
         $this->customer_handle = $in_customer_handle;
     }
     
@@ -136,13 +148,17 @@ class CIDRdataSet
     
     // 
     public function get_company_info (&$out_company_name, &$out_company_handle) {
+        
         $out_company_name = $this->company_name;
+        
         $out_company_handle = $this->company_handle;
     }
     
     // 
     public function get_customer_info (&$out_customer_name, &$out_customer_handle) {
+        
         $out_customer_name = $this->customer_name;
+        
         $out_customer_handle = $this->customer_handle;
     }
 }
