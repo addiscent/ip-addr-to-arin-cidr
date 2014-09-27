@@ -11,4 +11,4 @@ This is a simple tool for web host administrators.  It assists during the admin'
 
 Visit the latest stable working "Deny From IP" web page example at http://ip-addr-to-arin-cidr.dalornet.com.
 
-Copyright (C) Charles Thomaston - ckthomaston@gmail.com
+Copyright (C) Charles Thomaston - ckthomaston@dalorweb.com

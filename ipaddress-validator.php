@@ -3,7 +3,7 @@
     Filename: ipaddress-validator.php
     Rev 2014.0914.0730
     Project: ip-addr-to-arin-cidr
-    Copyright (C) Charles Thomaston - ckthomaston@gmail.com
+    Copyright (C) Charles Thomaston - ckthomaston@dalorweb.com
     
     Description:
     
