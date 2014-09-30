@@ -1,6 +1,6 @@
 /*
     Filename: readme.txt
-    Rev 2014.0914.0730
+    Rev 2014.0930.0030
     Project: ip-addr-to-arin-cidr  
     Copyright (C) Charles Thomaston - ckthomaston@dalorweb.com
     
@@ -32,9 +32,8 @@
         - cidr-data-set.php - class required by ip-addr-to-arin-cidr.php
         - http-request.php - class required by ip-addr-to-arin-cidr.php
         - ipaddr-to-cidr-worker.php - class required by ip-addr-to-arin-cidr.php
-        - ipaddress-validator.php - class required by ip-addr-to-arin-cidr.php
         - output-worker.php - class required by ip-addr-to-arin-cidr.php
-        - itac-class-diagram.png - docmentation for developers
+        - itac-class-diagram.gif - docmentation for developers
         - README.md - project description on GitHub.com
         - LICENSE - A license file describing terms of use
     
@@ -50,7 +49,7 @@
     
         For more information about re-using the source code in this product, see
         the other included .php files.  Also, refer to the "ip-addr-to-arin-cidr
-        Project UML Class Diagram" file, itac-class-diagram.png.
+        Project UML Class Diagram" file, itac-class-diagram.gif.
     
     License:
 

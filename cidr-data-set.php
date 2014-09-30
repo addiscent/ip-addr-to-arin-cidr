@@ -1,7 +1,7 @@
 <?php
 /*
     Filename: cidr-data-set.php
-    Rev 2014.0914.0730
+    Rev 2014.0930.0030
     Project: ip-addr-to-arin-cidr
     Copyright (C) Charles Thomaston - ckthomaston@dalorweb.com
     
@@ -19,7 +19,7 @@
     
         For more information about re-using the source code in this product, see
         the other included .php files.  Also, refer to the "ip-addr-to-arin-cidr
-        Project UML Class Diagram" file, itac-class-diagram.png.
+        Project UML Class Diagram" file, itac-class-diagram.gif.
 
     License:
 

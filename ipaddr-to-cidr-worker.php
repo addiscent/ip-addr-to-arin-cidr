@@ -1,7 +1,7 @@
 <?php
 /*
     Filename: ipaddr-to-cidr-worker.php
-    Rev 2014.0914.0730
+    Rev 2014.0930.0030
     Project: ip-addr-to-arin-cidr
     Copyright (C) Charles Thomaston - ckthomaston@dalorweb.com
     
@@ -15,7 +15,7 @@
         
         For more information about re-using the source code in this product, see
         the other included .php files.  Also, refer to the "ip-addr-to-arin-cidr
-        Project UML Class Diagram" file, itac-class-diagram.png.
+        Project UML Class Diagram" file, itac-class-diagram.gif.
     
     License:
 
@@ -55,12 +55,12 @@ class IPaddrToCIDRworker
     }
     
     // 
-    public function get_cidr_data_result ($ipaddr_validated = NULL, &$CIDRdataSet = NULL) {
+    public function get_cidr_data_result ($ipaddr = NULL, &$CIDRdataSet = NULL) {
     
         // query ARIN for net block data of specified IP address
-        $result = new HTTPRequest ('http://whois.arin.net/rest/ip/' . $_POST["ipaddr"]); 
-        $body_string =  $result->DownloadToString(); 
-    
+        $result = new HTTPRequest ('http://whois.arin.net/rest/ip/' . $ipaddr); 
+        $body_string =  $result->DownloadToString();
+        
         //  search for cidrLength first because it is encountered before associated startAddress
         //  find cidrLength by discarding string segment up to and including "cidrLength>"
         $string_remainder = $this->ltrim_to_data ($body_string, "cidrLength>");
@@ -86,7 +86,7 @@ class IPaddrToCIDRworker
         // stash sthe startAddress and cidrLength we've found thus far
         $CIDRdataSet->add_cidr ($address_range_start, $cidr_length);
 
-        $CIDRdataSet->set_ipaddr ($ipaddr_validated);
+        $CIDRdataSet->set_ipaddr ($ipaddr);
         $CIDRdataSet->set_cidr_date_time (date('M d, Y  H:i') . " GMT");
 
         // there may be more than one net block. Keep searching until no more are found

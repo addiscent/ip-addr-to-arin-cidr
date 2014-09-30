@@ -1,7 +1,7 @@
 <?php
 /*
     Filename: ip-addr-to-arin-cidr.php
-    Rev 2014.0914.0730
+    Rev 2014.0930.0030
     Project: ip-addr-to-arin-cidr  
     Copyright (C) Charles Thomaston - ckthomaston@dalorweb.com
     
@@ -33,9 +33,8 @@
         - cidr-data-set.php - class required by ip-addr-to-arin-cidr.php
         - http-request.php - class required by ip-addr-to-arin-cidr.php
         - ipaddr-to-cidr-worker.php - class required by ip-addr-to-arin-cidr.php
-        - ipaddress-validator.php - class required by ip-addr-to-arin-cidr.php
         - output-worker.php - class required by ip-addr-to-arin-cidr.php
-        - itac-class-diagram.png - docmentation for developers
+        - itac-class-diagram.gif - docmentation for developers
         - README.md - project description on GitHub.com
         - LICENSE - A license file describing terms of use
     
@@ -51,7 +50,7 @@
     
         For more information about re-using the source code in this product, see
         the other included .php files.  Also, refer to the "ip-addr-to-arin-cidr
-        Project UML Class Diagram" file, itac-class-diagram.png.
+        Project UML Class Diagram" file, itac-class-diagram.gif.
     
     License:
 
@@ -72,41 +71,40 @@
 
 
 require "http-request.php";
-require "ipaddress-validator.php";
 require "output-worker.php";
 require "ipaddr-to-cidr-worker.php";
 require "cidr-data-set.php";
 
-$IPaddressValidator = new IPaddressValidator();
+// $IPaddressValidator = new IPaddressValidator();
 $OutputWorker = new OutputWorker();
 $IPaddrToCIDRworker = new IPaddrToCIDRworker();
 $CIDRdataSet = new CIDRdataSet();
 
 if (!array_key_exists ('ipaddr', $_POST)) {
     
-    $OutputWorker->set_cidr_data (NULL); // empty data causes user prompt
+    $OutputWorker->set_cidr_data ( NULL ); // empty data causes user prompt
     
 } else {
     
-    $ipaddr_not_validated = $_POST['ipaddr'];
-    $result = ip2long($ipaddr_not_validated);
+    $ipaddr = $_POST [ 'ipaddr' ];
+    $result = ip2long ( $ipaddr );
     
-    if ($result == IPAV_VALID) {
+    if ( $result == TRUE ) {
         
-        $ipaddr_validated = $ipaddr_not_validated;
-        $result = $IPaddrToCIDRworker->get_cidr_data_result ($ipaddr_validated, $CIDRdataSet);
+        $result = $IPaddrToCIDRworker->get_cidr_data_result ( $ipaddr, $CIDRdataSet );
         
-        if ($result == STATUS_SUCCESS) {
-            $OutputWorker->set_cidr_data ($CIDRdataSet);
+        if ( $result == STATUS_SUCCESS ) {
+            
+            $OutputWorker->set_cidr_data ( $CIDRdataSet );
             
         } else {
             
             $err_msg = "Unable to retrieve data from ARIN Whois-RWS API.";
-            $OutputWorker->set_error_msg ($err_msg);
+            $OutputWorker->set_error_msg ( $err_msg );
         }
     } else {
         
-        $err_msg = "Invalid IP address specified : $ipaddr_not_validated";
-        $OutputWorker->set_error_msg ($err_msg);
+        $err_msg = "Invalid IP address specified : $ipaddr";
+        $OutputWorker->set_error_msg ( $err_msg );
     }
 }
