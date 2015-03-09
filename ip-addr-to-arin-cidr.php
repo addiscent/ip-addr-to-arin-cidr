@@ -1,7 +1,7 @@
 <?php
 /*
     Filename: ip-addr-to-arin-cidr.php
-    Rev 2014.0930.0030
+    Rev 2015.0309.0110
     Project: ip-addr-to-arin-cidr  
     Copyright (C) Charles Thomaston - ckthomaston@dalorweb.com
     
@@ -20,7 +20,7 @@
         range of IP addresses containing the user-submitted IP address.
         
         This software does not write or modify files, the admin must manually
-        insert the HTTP directives displayed into an .htaccess file.
+        insert the displayed HTTP directives into an .htaccess file.
     
     Files:
     
@@ -69,42 +69,71 @@
         owners.
 */
 
+/*  these directory hardcodes below are hackful, but should hopefully give you
+    some hints about how to "port" this tool to a variety of web sites.
+    Note that you must replace one each of the commented-out TOOL_FILES_DIR and
+    TOOL_WEB_PAGE definitions with correct values for your website,
+    otherwise, you will not make your time joyful.
+*/
+ 
+//  If you are working in a WordPress web site directory hierarchy, this define is
+//  most likely the directory where you will want to place the tool's PHP, files.
+// define ("TOOL_FILES_DIR", "wp-content/ip-addr-to-arin-cidr/");
 
-require "http-request.php";
-require "output-worker.php";
-require "ipaddr-to-cidr-worker.php";
-require "cidr-data-set.php";
+//  In a WordPress website directory hierarchy, this define reflects
+//  whatever you named the tool's page in the WordPress Dashboard. In that page,
+//  you invoke the tool using inline embedded PHP code, i.e., :
+//      include "ip-addr-to-arin-cidr.php"; // do not uncomment this one here! :)
+//  Beware, WordPress does not natively allow embedded PHP, but it will not warn
+//  you.  In order to embed PHP in a WordPress web page, you must first install
+//  a plugin, which typically uses short-codes.  "Shortcode Exec PHP" has
+//  worked for me, but I have only put it to light use. YMMV...
+// define ("TOOL_WEB_PAGE", "http://dwt.dalorweb.com/deny-from-ip");
 
-// $IPaddressValidator = new IPaddressValidator();
+//  below are example definitions placing the tool in a web doc_root by itself,
+//  (if you have just a small number of files, or you like doc_root clutter).
+// define ("TOOL_FILES_DIR", "");
+// define ("TOOL_WEB_PAGE", "http://ip-addr-to-arin-cidr.dalorweb.com/index.php");
+
+require TOOL_FILES_DIR . "http-request.php";
+require TOOL_FILES_DIR . "output-worker.php";
+require TOOL_FILES_DIR . "ipaddr-to-cidr-worker.php";
+require TOOL_FILES_DIR . "cidr-data-set.php";
+
+// result returned by ip2long() - ipaddr is valid or invalid
+define ("IPAV_VALID", TRUE);
+define ("IPAV_INVALID", FALSE);
+
 $OutputWorker = new OutputWorker();
 $IPaddrToCIDRworker = new IPaddrToCIDRworker();
 $CIDRdataSet = new CIDRdataSet();
 
 if (!array_key_exists ('ipaddr', $_POST)) {
     
-    $OutputWorker->set_cidr_data ( NULL ); // empty data causes user prompt
+    $OutputWorker->set_cidr_data (NULL, TOOL_WEB_PAGE); // empty data causes user prompt
     
 } else {
     
-    $ipaddr = $_POST [ 'ipaddr' ];
-    $result = ip2long ( $ipaddr );
+    $ipaddr_not_validated = $_POST['ipaddr'];
+    $result = ip2long($ipaddr_not_validated);
     
-    if ( $result == TRUE ) {
+    if ($result == IPAV_VALID) {
         
-        $result = $IPaddrToCIDRworker->get_cidr_data_result ( $ipaddr, $CIDRdataSet );
+        $ipaddr_validated = $ipaddr_not_validated;
+        $result = $IPaddrToCIDRworker->get_cidr_data_result ($ipaddr_validated, $CIDRdataSet);
         
-        if ( $result == STATUS_SUCCESS ) {
-            
-            $OutputWorker->set_cidr_data ( $CIDRdataSet );
+        if ($result == STATUS_SUCCESS) {
+            $OutputWorker->set_cidr_data ($CIDRdataSet, TOOL_WEB_PAGE);
             
         } else {
             
             $err_msg = "Unable to retrieve data from ARIN Whois-RWS API.";
-            $OutputWorker->set_error_msg ( $err_msg );
+            $OutputWorker->set_error_msg ($err_msg, TOOL_WEB_PAGE);
         }
     } else {
         
-        $err_msg = "Invalid IP address specified : $ipaddr";
-        $OutputWorker->set_error_msg ( $err_msg );
+        $err_msg = "Invalid IP address specified : $ipaddr_not_validated";
+        $OutputWorker->set_error_msg ($err_msg, TOOL_WEB_PAGE);
     }
 }
+?>

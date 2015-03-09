@@ -1,7 +1,7 @@
 <?php
 /*
     Filename: output-worker.php
-    Rev 2014.0930.0030
+    Rev 2015.0309.0110
     Project: ip-addr-to-arin-cidr
     Copyright (C) Charles Thomaston - ckthomaston@dalorweb.com
     
@@ -42,23 +42,23 @@ class OutputWorker
             . '</span></span></strong></span>';
     }            
     
-    public function set_error_msg ($err_msg) {
+    public function set_error_msg ($err_msg, $local_home_page) {
         
-        $this->display_instructions_form ();
+        $this->display_instructions_form ($local_home_page);
         
-        echo '<span style="font-family:courier new,courier,monospace"><strong><span style="color:#002222"><span style="background-color:#FFDD66">'
+        echo '<span style="font-family:courier new,courier,monospace"><strong><span style="color:#002222"><span style="background-color:#FF8822">'
             .       $err_msg
             . '</span></span></strong></span>';
     }            
     
     // display instructions and IP address input form
-    private function display_instructions_form () {
+    private function display_instructions_form ($local_home_page) {
         
-        echo '<h2>'
+        echo '<h1>'
         .       "Deny From IP"
-        .   "</h2>"
+        .   "</h1>"
         .   '<h5>'
-        .       "Project: ip-addr-to-arin-cidr, rev 2014.0930.0030"
+        .       "Project: ip-addr-to-arin-cidr, rev 2015.0309.0110"
         .   "</h5>"
         .   '<p>'
         .       "This is a simple web host administrator's tool. It's only function is to provide
@@ -94,15 +94,17 @@ class OutputWorker
         .           "</small>"
         .       "</p>"
         .   "</div>"
-        .       "<h4>"
+        .       "<h2>"
         .           "User Instructions"
-        .       "</h4>"
+        .       "</h2>"
         .       '<p>'
         .           "Submit an IP address, e.g., 127.0.0.1, in the edit box below.
                     A network CIDR will be displayed, placed in a code snippet
                     format suitable for copy-and-paste into an .htaccess file."
         .       "</p>"
-        .   '<form action="ip-addr-to-arin-cidr.php" method="post">'
+        .   '<form action='
+		.		$local_home_page
+		.		' method="post">'
         .   '<p>'
         .       'IP Address: <input type="text" name="ipaddr"> <input type="submit">'
         .   "</p>"
@@ -110,14 +112,13 @@ class OutputWorker
     }
     
     // display CIDR data set
-    public function set_cidr_data ($CIDRdataSet = NULL) {
+    public function set_cidr_data ($CIDRdataSet = NULL, $local_home_page) {
+        
+        $this->display_instructions_form ($local_home_page);
         
         if ($CIDRdataSet == NULL) {
-            $this->display_instructions_form ();
             return;
         }
-        
-        $this->display_instructions_form ();
         
         // list company name
         $org_name = NULL;
@@ -153,7 +154,7 @@ class OutputWorker
         echo "<p>
                 <em>
                     <small>
-                        Note that the date and time is GMT, it is not adjusted for your time zone.</small>
+                        Note the date and time is GMT/UTC, it is not adjusted for your time zone.</small>
                     </small>
                 </em>
              </p>";

@@ -1,7 +1,7 @@
 <?php
 /*
     Filename: ipaddr-to-cidr-worker.php
-    Rev 2014.0930.0030
+    Rev 2015.0309.0110
     Project: ip-addr-to-arin-cidr
     Copyright (C) Charles Thomaston - ckthomaston@dalorweb.com
     
@@ -87,7 +87,7 @@ class IPaddrToCIDRworker
         $CIDRdataSet->add_cidr ($address_range_start, $cidr_length);
 
         $CIDRdataSet->set_ipaddr ($ipaddr);
-        $CIDRdataSet->set_cidr_date_time (date('M d, Y  H:i') . " GMT");
+        $CIDRdataSet->set_cidr_date_time (date('M d, Y  H:i') . " GMT/UTC");
 
         // there may be more than one net block. Keep searching until no more are found
         $netblock_found = TRUE;
