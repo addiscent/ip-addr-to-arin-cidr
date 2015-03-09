@@ -39,12 +39,22 @@
     
     Installation Instructions:
     
-        Place the six included .php files in a web server directory, e.g.,
-        http://example.com/ip-addr-to-arin-cidr/, which is accessible on the
-        web and has Internet access.  Load "index.php" from that directory
-        into a web browser.  Follow the instructions given on the web page
-        which is displayed.
+        IMPORTANT NOTE: the "ip-addr-to-arin-cidr.php" file contains
+        essential information required to fully complete installation.
+        Constants in that file must be adjusted to your web site directory
+        hierarchy, or the PHP runtime will generate errors on the tool's
+        web page when executing. For more information, read the comments at
+        the beginning of the code in the "ip-addr-to-arin-cidr.php" file.
     
+        The gist of the installation process is as follows.  Place the six
+        included .php project files in a web server directory, e.g.,
+        "http://example.com/ip-addr-to-arin-cidr/", which is accessible
+        on the web and has Internet access.  After adjusting the file hierarchy
+        definitions as described in "ip-addr-to-arin-cidr.php", load
+        "index.php" from the tool's web page directory, into a web browser.
+        After you have confirmed a working website page installation, use the
+        tool by following the instructions given on the tool's web page.
+        
     Developer's notes:
     
         For more information about re-using the source code in this product, see
