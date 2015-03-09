@@ -39,7 +39,7 @@
     
     Installation Instructions:
     
-        Place the seven included .php files in a web server directory, e.g.,
+        Place the six included .php files in a web server directory, e.g.,
         http://example.com/ip-addr-to-arin-cidr/, which is accessible on the
         web and has Internet access.  Load "index.php" from that directory
         into a web browser.  Follow the instructions given on the web page
