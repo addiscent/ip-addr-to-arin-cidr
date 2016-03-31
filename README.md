@@ -1,5 +1,10 @@
-ip-addr-to-arin-cidr
-====================
+**Important: Apache Web Server Version Compatibility Note:
+
+  This program is not compatible with Apache Web Server v2.4.x and later.  "Ip-addr-to-arin-cidr" uses the "deny from" .htaccess file directive to block service to IP addresses.  However, the "deny from" (etc) directive set has been deprecated in Apached v2.4 and later; the "deny from" directive has been replaced by a different IP allow/block directive set, ("Require all granted... Require not ip X.X.X.X, etc").  Therefore, "ip-addr-to-arin-cidr", is ONLY useful in older versions of Apache Web Server which correctly support the "deny from" directive.  Please see the Apache documentation for additional information.
+  
+  This project remains online for those who must use older versions of Apache which are compatible, though operating an obsolete version of Apache is not recommended.
+
+*ip-addr-to-arin-cidr
 
 A web page which accepts an IP address from the user and uses ARIN Whois-RWS API to look up network range and owner.
 
