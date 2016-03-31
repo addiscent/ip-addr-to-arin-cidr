@@ -3,7 +3,7 @@
     Filename: output-worker.php
     Rev 2015.0309.0110
     Project: ip-addr-to-arin-cidr
-    Copyright (C) Charles Thomaston - ckthomaston@dalorweb.com
+    Copyright (C) Charles Thomaston - raddiscentis@addiscent.com
     
     Description:
     
@@ -89,8 +89,8 @@ class OutputWorker
         .       '<p style="text-align: left;">'
         .           "<small>"
         .                'View, download, or fork the "Deny From IP" PHP source code on GitHub at: <br>'
-        .                    '<a href="https://github.com/ckthomaston/ip-addr-to-arin-cidr">'
-        .                    "https://github.com/ckthomaston/ip-addr-to-arin-cidr</a>"
+        .                    '<a href="https://github.com/addiscent/ip-addr-to-arin-cidr">'
+        .                    "https://github.com/addiscent/ip-addr-to-arin-cidr</a>"
         .           "</small>"
         .       "</p>"
         .   "</div>"

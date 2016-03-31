@@ -3,7 +3,7 @@
     Filename: ip-addr-to-arin-cidr.php
     Rev 2015.0309.0110
     Project: ip-addr-to-arin-cidr  
-    Copyright (C) Charles Thomaston - ckthomaston@dalorweb.com
+    Copyright (C) Charles Thomaston - ckthomaston@addiscent.com
     
     Description:
     
@@ -98,12 +98,12 @@
 //  you.  In order to embed PHP in a WordPress web page, you must first install
 //  a plugin, which typically uses short-codes.  "Shortcode Exec PHP" has
 //  worked for me, but I have only put it to light use. YMMV...
-// define ("TOOL_WEB_PAGE", "http://dwt.dalorweb.com/deny-from-ip");
+// define ("TOOL_WEB_PAGE", "http://dwt.addiscent.com/deny-from-ip");
 
 //  below are example definitions placing the tool in a web doc_root by itself,
 //  (if you have just a small number of files, or you like doc_root clutter).
 // define ("TOOL_FILES_DIR", "");
-// define ("TOOL_WEB_PAGE", "http://ip-addr-to-arin-cidr.dalorweb.com/index.php");
+// define ("TOOL_WEB_PAGE", "http://ip-addr-to-arin-cidr.addiscent.com/index.php");
 
 require TOOL_FILES_DIR . "http-request.php";
 require TOOL_FILES_DIR . "output-worker.php";

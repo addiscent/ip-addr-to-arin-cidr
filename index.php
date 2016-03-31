@@ -3,7 +3,7 @@
     Filename: index.php
     Rev 2014.0930.0030
     Project: ip-addr-to-arin-cidr
-    Copyright (C) Charles Thomaston - ckthomaston@dalorweb.com
+    Copyright (C) Charles Thomaston - ckthomaston@addiscent.com
     
     Description:
     
