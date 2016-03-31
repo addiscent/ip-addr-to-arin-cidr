@@ -1,14 +1,14 @@
-**Important: Apache Web Server Version Compatibility Note:
+## Important: Apache Web Server Version Compatibility Note:
 
-  This program is not compatible with Apache Web Server v2.4.x and later.  "Ip-addr-to-arin-cidr" uses the "deny from" .htaccess file directive to block service to IP addresses.  However, the "deny from" (etc) directive set has been deprecated in Apached v2.4 and later; the "deny from" directive has been replaced by a different IP allow/block directive set, ("Require all granted... Require not ip X.X.X.X, etc").  Therefore, "ip-addr-to-arin-cidr", is ONLY useful in older versions of Apache Web Server which correctly support the "deny from" directive.  Please see the Apache documentation for additional information.
+  This program is _not_ compatible with _Apache Web Server v2.4_ and later.  "Ip-addr-to-arin-cidr" uses the "deny from" .htaccess file directive to block service to IP addresses.  However, the "deny from" (etc) directive set has been deprecated in _Apache v2.4_; the "deny from" directive has been replaced by a different IP allow/block directive set, ("Require all granted... Require not ip X.X.X.X, etc").  Therefore, "ip-addr-to-arin-cidr", is _only_ useful in older versions of Apache Web Server which correctly support the "deny from" directive.  Please see the Apache documentation for additional information.
   
   This project remains online for those who must use older versions of Apache which are compatible, though operating an obsolete version of Apache is not recommended.
 
-*ip-addr-to-arin-cidr
+# ip-addr-to-arin-cidr
 
-A web page which accepts an IP address from the user and uses ARIN Whois-RWS API to look up network range and owner.
+This is a PHP/HTML web page which accepts an IP address from the user and uses ARIN Whois-RWS API to look up network range and owner.
 
-Better known by the familiar name "Deny From IP".
+This project is also knows by the name "Deny From IP".
 
 "Deny From IP" is a web page which displays instructions and accepts an IP address entered by a user.  The web page uses the submitted IP address during a query to the ARIN Whois-RWS API.  The query looks up the network range of IP addresses which contains the IP address submitted by the user.  The associated CIDR and its owner is displayed to the user, along with other information and terms.
 
