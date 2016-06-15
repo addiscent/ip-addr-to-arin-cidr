@@ -16,4 +16,4 @@ This is a simple tool for web host administrators.  It assists during the admin'
 
 Visit the latest stable working "Deny From IP" web page example at http://ip-addr-to-arin-cidr.addiscent.solutions.
 
-Copyright (C) Charles Thomaston - raddiscentis@addiscent.com
+Copyright (C) Rex Addiscentis - raddiscentis@addiscent.com

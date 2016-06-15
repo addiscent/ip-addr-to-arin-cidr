@@ -2,7 +2,7 @@
     Filename: readme.txt
     Rev 2014.0930.0030
     Project: ip-addr-to-arin-cidr  
-    Copyright (C) Charles Thomaston - raddiscentis@addiscent.com
+    Copyright (C) Rex Addiscentis - raddiscentis@addiscent.com
     
     Important: Apache Web Server Version Compatibility Note
 

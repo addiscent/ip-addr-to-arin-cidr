@@ -3,7 +3,7 @@
     Filename: cidr-data-set.php
     Rev 2014.0930.0030
     Project: ip-addr-to-arin-cidr
-    Copyright (C) Charles Thomaston - ckthomaston@addiscent.com
+    Copyright (C) Rex Addiscentis - raddiscentis@addiscent.com
     
     Description:
     

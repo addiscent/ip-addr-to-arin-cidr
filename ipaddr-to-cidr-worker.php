@@ -3,7 +3,7 @@
     Filename: ipaddr-to-cidr-worker.php
     Rev 2015.0309.0110
     Project: ip-addr-to-arin-cidr
-    Copyright (C) Charles Thomaston - ckthomaston@addiscent.com
+    Copyright (C) Rex Addiscentis - raddiscentis@addiscent.com
     
     Description:
     
