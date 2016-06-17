@@ -34,7 +34,6 @@
         - http-request.php - class required by ip-addr-to-arin-cidr.php
         - ipaddr-to-cidr-worker.php - class required by ip-addr-to-arin-cidr.php
         - output-worker.php - class required by ip-addr-to-arin-cidr.php
-        - itac-class-diagram.gif - docmentation for developers
         - README.md - project description on GitHub.com
         - LICENSE - A license file describing terms of use
     
@@ -59,8 +58,7 @@
     Developer's notes:
     
         For more information about re-using the source code in this product, see
-        the other included .php files.  Also, refer to the "ip-addr-to-arin-cidr
-        Project UML Class Diagram" file, itac-class-diagram.gif.
+        the other included .php files.
     
     License:
 
@@ -100,7 +98,7 @@
 //  worked for me, but I have only put it to light use. YMMV...
 // define ("TOOL_WEB_PAGE", "http://dwt.addiscent.com/deny-from-ip");
 
-//  below are example definitions placing the tool in a web doc_root by itself,
+//  below are example definitions to place the tool in a web doc_root by itself,
 //  (if you have just a small number of files, or you like doc_root clutter).
 // define ("TOOL_FILES_DIR", "");
 // define ("TOOL_WEB_PAGE", "http://ip-addr-to-arin-cidr.addiscent.com/index.php");

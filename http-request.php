@@ -29,8 +29,7 @@
         standards.
     
         For more information about re-using the source code in this product, see
-        the other included .php files.  Also, refer to the "ip-addr-to-arin-cidr
-        Project UML Class Diagram".
+        the other project .php files.
     
     License:
 
