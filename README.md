@@ -18,6 +18,6 @@ This project is also known by the name "Deny From IP".
 
 "Deny From IP" is a web page which displays instructions and accepts an IP address entered by a user.  The web page uses the submitted IP address to do a query to the ARIN Whois-RWS API.  The query looks up the network range of IP addresses which contains the IP address submitted by the user.  The associated CIDR is displayed to the user, along with other information.
 
-Visit the latest stable working "Deny From IP" web page example at http://ip-addr-to-arin-cidr.addiscent.solutions.
+Visit the latest stable working "Deny From IP" web page example at http://ip-addr-to-arin-cidr.addiscent.com.
 
 Copyright (C) Rex Addiscentis - raddiscentis@addiscent.com
